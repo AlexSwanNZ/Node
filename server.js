@@ -4,7 +4,7 @@ const fs = require('fs')
 
 const port = process.env.PORT || 3000
 var app = express()
-var m_mode = true
+var m_mode = false
 
 hbs.registerPartials(__dirname + '/views/partials')
 app.set('view engine', 'hbs')
@@ -51,6 +51,12 @@ app.get('/about', (req, res) => {
 app.get('/bad', (req, res) => {
     res.send({
         error_message: "Unable to execute request"
+    })
+})
+
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        page_title: 'Projects',
     })
 })
 
